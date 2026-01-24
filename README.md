@@ -156,6 +156,12 @@ Machine Learning Workflow
 *   PR AUC ≈ 0.64
     
 *   Optimized threshold ≈ 0.57
+
+## Design Decisions & Tradeoffs
+
+- **Warehouse-first transformations:** All feature engineering and aggregations live in Snowflake views to ensure consistency between ML and BI.
+- **Logistic Regression over black-box models:** Chosen for interpretability and stable probability calibration in churn use cases.
+- **Latest-run isolation:** BI views are scoped to the most recent model run to prevent stale scores from leaking into dashboards.
     
 
 Power BI Dashboards
@@ -344,6 +350,13 @@ Outputs:
 *   Import BI views
     
 *   Load dashboard (`.pbix`)
+
+
+## Future Enhancements
+
+- Add incremental scoring using Snowflake Tasks and Streams
+- Introduce feature monitoring and data drift detection
+- Deploy Power BI dashboards via scheduled refresh and role-based access
     
 
 Security Notes
