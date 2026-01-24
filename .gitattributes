@@ -1,0 +1,3 @@
+# Make sure SQL files are counted
+*.sql linguist-language=SQL
+*.sql linguist-detectable=true
